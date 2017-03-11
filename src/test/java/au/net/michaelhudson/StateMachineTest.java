@@ -1,6 +1,7 @@
 package au.net.michaelhudson;
 
-import au.net.michaelhudson.mixlang.payments.StateMachine;
+import au.net.michaelhudson.mixlang.payments.ScalaStateMachine;
+import au.net.michaelhudson.mixlang.payments.JavaStateMachine;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -64,8 +65,10 @@ public class StateMachineTest {
 
     @Test
     public void testJavaImplementation() {
-        String actualState = StateMachine.calculate(currentState, event);
+        String actualState = JavaStateMachine.calculate(currentState, event);
+        String scalaState = ScalaStateMachine.calculate(currentState, event);
         assertEquals(expectedState, actualState);
+        assertEquals(expectedState, scalaState);
     }
 
 }

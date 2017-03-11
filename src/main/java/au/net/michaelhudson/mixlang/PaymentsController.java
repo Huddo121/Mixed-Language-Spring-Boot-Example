@@ -1,7 +1,7 @@
 package au.net.michaelhudson.mixlang;
 
 import au.net.michaelhudson.mixlang.payments.PaymentRepository;
-import au.net.michaelhudson.mixlang.payments.StateMachine;
+import au.net.michaelhudson.mixlang.payments.ScalaStateMachine;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +37,7 @@ public class PaymentsController {
     @RequestMapping(value = "/payments", method = RequestMethod.POST)
     public String calculateState(@RequestParam Integer paymentId, @RequestParam String event) {
         String currentState = db.getPaymentState(paymentId);
-        String paymentState = StateMachine.calculate(currentState, event);
+        String paymentState = ScalaStateMachine.calculate(currentState, event);
 
         if(paymentState.equals("ERROR")) {
             throw new IllegalArgumentException("ERROR - Payment State not updated, bad event");
