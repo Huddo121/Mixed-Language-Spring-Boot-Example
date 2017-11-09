@@ -10,7 +10,7 @@ import java.util.logging.Logger
 object ScalaStateMachine {
   val STATES = List("INIT", "CLEARED", "SETTLED", "REJECTED", "ABORTED")
   val EVENTS = List("CLEARED", "SETTLED", "REJECTED", "ABORTED")
-  private val LOG = Logger.getLogger("JavaStateMachine")
+  private val LOG = Logger.getLogger("ScalaStateMachine")
 
   def calculate(currentState: String, event: String): String = {
     if (!STATES.contains(currentState)) {
