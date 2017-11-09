@@ -17,6 +17,7 @@ object ScalaStateMachine {
       LOG.warning("BAD STATE")
       return "ERROR"
     }
+
     if (!EVENTS.contains(event)) {
       LOG.warning("BAD EVENT")
       return "ERROR"
